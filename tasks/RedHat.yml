@@ -7,6 +7,12 @@
   register: yum_result
   ignore_errors: true
 
+- name: "Make /var/awslogs/etc/ directory"
+  file:
+    path: /var/awslogs/etc/
+    state: directory
+    mode: 755
+    
 - block:
   - name: "Get ec2 facts (RedHat)."
     ec2_metadata_facts:
